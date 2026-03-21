@@ -1,0 +1,59 @@
+{% extends "website/_layouts/base.html" %}
+
+{% block title %}Porto Seguro - Início{% endblock %}
+
+{% block conteudo %}
+
+<!-- Carrossel Swiper -->
+<div class="swiper meu-swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="https://imgmd.net/images/v1/guia/1699832/centro-historico-de-porto-seguro.jpg" alt="Centro Histórico">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://imgmd.net/images/v1/guia/1699833/centro-historico-de-porto-seguro.jpg" alt="Porto Seguro">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://imgmd.net/images/v1/guia/1699828/centro-historico-de-porto-seguro.jpg" alt="Porto Seguro">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://imgmd.net/images/v1/guia/1699829/centro-historico-de-porto-seguro.jpg" alt="Porto Seguro">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://imgmd.net/images/v1/guia/1699830/centro-historico-de-porto-seguro.jpg" alt="Porto Seguro">
+        </div>
+        <div class="swiper-slide">
+            <img src="https://imgmd.net/images/v1/guia/1699831/centro-historico-de-porto-seguro.jpg" alt="Porto Seguro">
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+<div class="container">
+    <h1>Bem-vindo a Porto Seguro</h1>
+    <p>Porto Seguro é uma das cidades mais antigas do Brasil, localizada no sul da Bahia. Conhecida como a terra do descobrimento, a cidade encanta visitantes com suas praias paradisíacas, seu rico patrimônio histórico e sua vibrante cultura.</p>
+    <p>Explore as páginas deste site e descubra tudo o que Porto Seguro tem a oferecer!</p>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const swiper = new Swiper('.meu-swiper', {
+        loop: true,
+        autoplay: {
+            delay: 3000,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+{% endblock %}
