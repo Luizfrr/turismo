@@ -23,9 +23,7 @@ jobs:
         run: pip install -r turismo/requirements.txt
 
       - name: Coletar arquivos estáticos
-        run: |
-          cd turismo
-          python manage.py collectstatic --no-input
+        run: python manage.py collectstatic --no-input
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           DEBUG: "False"
