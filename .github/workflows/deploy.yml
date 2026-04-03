@@ -1,0 +1,36 @@
+name: CI/CD - Deploy Turismo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: Build e Deploy no Render
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Coletar arquivos estáticos
+        run: python manage.py collectstatic --no-input
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: "False"
+          ALLOWED_HOSTS: "localhost"
+
+      - name: Disparar deploy no Render
+        run: |
+          curl -s -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}" \
+            -o /dev/null \
+            -w "Status HTTP: %{http_code}\n"
